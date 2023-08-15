@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #jumpingImage {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transition: top 0.5s;
+  }
+</style>
+</head>
+<body>
+
+<img id="jumpingImage" src="https://via.placeholder.com/100" alt="Jumping Image">
+
+<script>
+  let jumpingImage = document.getElementById("jumpingImage");
+  let originalTop = parseInt(getComputedStyle(jumpingImage).top) || 0;
+  let jumping = false;
+
+  // Jump the image by 200 pixels
+  function jumpImage() {
+    if (!jumping) {
+      jumping = true;
+      jumpingImage.style.top = (originalTop - 200) + "px";
+      setTimeout(function() {
+        jumpingImage.style.top = originalTop + "px";
+        jumping = false;
+      }, 500);
+    }
+  }
+
+  // Handle the jump on space key press
+  window.addEventListener("keydown", function(event) {
+    if (event.code === "Space") {
+      jumpImage();
+    }
+  });
+</script>
+
+</body>
+</html>

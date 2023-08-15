@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  #movingDiv {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    transition: top 1s, left 1s;
+  }
+</style>
+</head>
+<body>
+
+<div id="movingDiv" onclick="moveDiv()"></div>
+
+<script>
+  let div = document.getElementById("movingDiv");
+  let clickCount = 0;
+
+  function moveDiv() {
+    clickCount++;
+
+    if (clickCount === 1) {
+      div.style.left = window.innerWidth - div.offsetWidth + "px";
+    } else if (clickCount === 2) {
+      div.style.top = window.innerHeight - div.offsetHeight + "px";
+    } else if (clickCount === 3) {
+      div.style.left = 0;
+    } else if (clickCount === 4) {
+      div.style.top = 0;
+      clickCount = 0;
+    }
+  }
+</script>
+
+</body>
+</html>

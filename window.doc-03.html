@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #resizingDiv {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    transition: width 1s, height 1s;
+  }
+</style>
+</head>
+<body>
+
+<div id="resizingDiv"></div>
+
+<script>
+  let div = document.getElementById("resizingDiv");
+  let isExpanded = false;
+
+  function resizeDiv() {
+    if (isExpanded) {
+      div.style.width = "200px";
+      div.style.height = "200px";
+    } else {
+      div.style.width = "400px";
+      div.style.height = "400px";
+    }
+    isExpanded = !isExpanded;
+  }
+
+  setInterval(resizeDiv, 1000);
+</script>
+
+</body>
+</html>

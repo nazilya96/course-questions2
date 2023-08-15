@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  #movingDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    transition: transform 1s;
+  }
+</style>
+</head>
+<body>
+
+    <div> 2. Bir div yaradin olcusu 100-100px kvadrat olsun 1 saniyeden bir 10px ashagi 10px saga transitionla hereket etsin.
+    </div>
+
+<div id="movingDiv"></div>
+
+<script>
+  let div = document.getElementById("movingDiv");
+  let topPosition = 0;
+  let leftPosition = 0;
+
+  function moveDiv() {
+    topPosition += 10;
+    leftPosition += 10;
+    div.style.transform = `translate(${leftPosition}px, ${topPosition}px)`;
+  }
+
+  setInterval(moveDiv, 1000);
+</script>
+
+</body>
+</html>

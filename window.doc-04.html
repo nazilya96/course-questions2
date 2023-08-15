@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f3f3f3;
+    font-family: Arial, sans-serif;
+  }
+
+  #rotatingDiv {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+
+  #buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+   button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #c0392b;
+  }
+</style>
+</head>
+<body>
+
+<div id="rotatingDiv"></div>
+<div id="buttons">
+  <button id="startButton">Start</button>
+  <button id="stopButton">Stop</button>
+</div>
+
+<script>
+  let div = document.getElementById("rotatingDiv");
+  let startButton = document.getElementById("startButton");
+  let stopButton = document.getElementById("stopButton");
+  let rotationInterval;
+  let rotationAngle = 0;
+
+  startButton.addEventListener("click", startRotation);
+  stopButton.addEventListener("click", stopRotation);
+
+  function startRotation() {
+    rotationInterval = setInterval(rotateDiv, 2000);
+  }
+
+  function rotateDiv() {
+    rotationAngle += 90;
+    div.style.transform = `rotate(${rotationAngle}deg)`;
+  }
+
+  function stopRotation() {
+    clearInterval(rotationInterval);
+    stopButton.innerText = "3";
+    setTimeout(function() {
+      stopButton.innerText = "2";
+    }, 1000);
+    setTimeout(function() {
+      stopButton.innerText = "1";
+    }, 2000);
+    setTimeout(function() {
+      stopButton.innerText = "Stop";
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
+

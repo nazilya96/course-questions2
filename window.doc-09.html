@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    cursor: pointer;
+  }
+
+  #colorSquare {
+    width: 100px;
+    height: 100px;
+    border: 50px solid transparent;
+    transition: border-color 0.5s;
+  }
+</style>
+</head>
+<body>
+
+<div id="colorSquare">click me</div>
+
+<script>
+  let colorSquare = document.getElementById("colorSquare");
+
+  function generateRandomColor() {
+    let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    return randomColor;
+  }
+
+  function updateColorSquare() {
+    let randomColor = generateRandomColor();
+    colorSquare.style.borderColor = randomColor;
+  }
+
+  // Update the color square and generate a new random color on click
+  colorSquare.addEventListener("click", function() {
+    updateColorSquare();
+  });
+</script>
+
+</body>
+</html>
